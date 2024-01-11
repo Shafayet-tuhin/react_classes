@@ -1,83 +1,120 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 
-function App() {
-
-  const [noteTitle, setNoteTitle] = useState("");
-  const [notes, setNotes] = useState([]);
-  const [editMode, setEditMode] = useState(false) ;
-  const [editable , setEditable] = useState(null) ;
-
-  const removeNote = (id) =>{
-    const newNote = notes.filter( el => el.id != id) ; 
-    setNotes(newNote);
-  }
+const App = () => {   
   
-  const editNotes = (id) => {
-         const toUpdate = notes.find( el => el.id == id) ; 
-        
-         setEditMode(true) ; 
-         setEditable(toUpdate) ; 
-         setNoteTitle(toUpdate.title) ;
+  const [studentName , setStudentName] = useState("") ; 
+  const [students,setStudents] = useState([]) ; 
+  const [editMode , setEditMode] = useState(false); 
+  const [editableStudent , setEditableStudent] = useState(null) ; 
+  
+  
+  const createStudentHandler = (e) => {
+    e.preventDefault() ; 
 
-  }
-
-  const updateNote = (el) => {
-    el.preventDefault() ;
-
-    if(noteTitle == '') {
-      alert('Please enter a title') ;
+    if( !studentName ) {
+      return alert("Please enter a name") ; 
     }
-        
-      const updatedArray = notes.map((el) => {
-        if(el.id == editable.id){
-          el.title = noteTitle ; 
-        }
-        return el ;
-      }) 
- 
-    setNotes(updatedArray) ;
-    setEditMode(false) ;
-    setEditable(null) ;
-    setNoteTitle('') ;
-   
+
+    const newStudent = {
+      id : Date.now(),
+      name : studentName , 
+      isPresent : undefined ,
+    }
+    setStudents([...students,newStudent]) ; 
+    setStudentName("") ;
+  } 
+
+  const revomeHandler = (id) => {
+    const currentStudent = students.filter( el => el.id !== id) ;
+    setStudents(currentStudent) ; 
   }
- 
-  const noteHandle = (el) => {
+
+  const editHandler = (id) => {
+      const toBeUpdated = students.find(el => el.id === id) ;
+        
+      setEditMode(true) ; 
+      setEditableStudent(toBeUpdated) ;
+      setStudentName(toBeUpdated.name) ;
+  }
+
+
+  const updateHandler = (el) => {
     el.preventDefault() ; 
 
-    if(noteTitle !=''){
-      const newNote = {
-        id : Date.now() ,  
-        title : noteTitle, 
-      }
-     setNotes([...notes, newNote])
-     setNoteTitle("");
+    if(!studentName ) {
+      return alert("Please enter a name") ; 
     }
-    else {
-      alert("Please enter a title")
-    }
-  }  
-
+   
+    const updateStudentsArray = students.map ( (item) => {
+ 
+       if ( item.id === editableStudent.id) {
+        item.name = studentName ; 
+       }
+       return item ; 
+    })
+ 
+    setStudents(updateStudentsArray) ;
+    setEditMode(false) ;
+    setEditableStudent(null) ;
+    setStudentName("") ;
+  }
+ 
 
   return (
+
     <div>
-      <form onSubmit={editMode ? updateNote : noteHandle}>
-        <input type="text" value={noteTitle} onChange={(el) => setNoteTitle(el.target.value)} />
-        <button type="submit"> {editMode ? 'Update Note' : 'Add Note'} </button>
-      </form>
+          <form onSubmit={editMode ? updateHandler : createStudentHandler}>
+            <input type="text" value={studentName} onChange={(el) => setStudentName(el.target.value)} />
+            <button type="submit">{editMode ? "Update Student" : "Add Student"}</button>
+          </form>
 
-      <ul>
-        {notes.map(el => (
-          <li key={el.id}>
-            <span>{el.title}</span>
-            <button onClick={() => editNotes(el.id)}>Edit</button>
-            <button onClick={() => removeNote(el.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+          <div className="student-section">
 
+            <div className="list all-students">
+              <h2>All Students</h2><hr />
+              <ul>
+                {
+                  students.map(item => (
+                    <li key={item.id}>
+                      <span>{item.name}</span>
+                      <button onClick={() => {editHandler(item.id)}}>Edit</button>
+                      <button onClick={() => {revomeHandler(item.id)}}>Delete</button>
+                      <button>Make Present</button>
+                      <button>Make Absent</button>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div className="list present-students">
+              <h2>Present Students</h2><hr />
+              <ul>
+                {
+                  students.filter( item => item.isPresent === true).map(item => (
+                    <li key={item.id}>
+                        <span>{item.name}</span>
+                        <button>Remove</button>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div className="list absent-students">
+              <h2>Absent Students</h2><hr />
+              <ul>
+                {
+                  students.filter( item => item.isPresent === false).map(item => (
+                    <li key={item.id}>
+                        <span>{item.name}</span>
+                        <button>Remove</button>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+          </div>
     </div>
   )
 }
