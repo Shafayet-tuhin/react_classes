@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import StudentForm from './components/StudentForm';
 import AllStudentList from './components/AllStudentList';
-import Attendance from './Attendance';
+import Attendance from './components/Attendance';
 
 const App = () => {   
   
