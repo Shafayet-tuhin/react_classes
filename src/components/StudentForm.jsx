@@ -50,3 +50,4 @@ const StudentForm = () => {
 }
 
 export default StudentForm
+
