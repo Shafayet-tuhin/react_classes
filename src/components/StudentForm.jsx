@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { studentContext } from '../contexts/StudentProvider';
 
-const StudentForm = ({studentName , setStudentName , students , setStudents , editableStudent , setEditableStudent , editMode ,setEditMode }) => {
+const StudentForm = () => {
 
+   const {studentName , setStudentName , students , setStudents , editableStudent , setEditableStudent , editMode ,setEditMode } = useContext(studentContext)
   const createStudentHandler = (e) => {
     e.preventDefault() ; 
 

@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { studentContext } from '../contexts/StudentProvider'
 
-const Attendance = ({students , setStudents}) => {
 
+const Attendance = () => {
+
+  const {students , setStudents}= useContext(studentContext)
 
 
     const changeStudent = (id) => {

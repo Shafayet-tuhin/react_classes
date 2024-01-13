@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { studentContext } from '../contexts/StudentProvider';
 
-const AllStudentList = ({students , setStudents , setEditMode , setEditableStudent , setStudentName}) => {
+const AllStudentList = () => {
 
-
+  const {students , setStudents , setEditMode , setEditableStudent , setStudentName} = useContext(studentContext) ;
+      
   const revomeHandler = (id) => {
     const currentStudent = students.filter( el => el.id !== id) ;
     setStudents(currentStudent) ; 
