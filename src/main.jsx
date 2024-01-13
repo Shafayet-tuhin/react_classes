@@ -6,10 +6,6 @@ import StudentProvider from './contexts/StudentProvider.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>,
-
    <StudentProvider>
     <App /> 
    </StudentProvider>
