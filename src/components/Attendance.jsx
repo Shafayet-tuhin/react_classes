@@ -4,13 +4,13 @@ import { studentContext } from '../contexts/StudentProvider'
 
 const Attendance = () => {
 
-  const {students , setStudents}= useContext(studentContext)
+  const data = useContext(studentContext)
 
 
     const changeStudent = (id) => {
-        const targetStudent = students.find(item => item.id === id)
+        const targetStudent = data.students.find(item => item.id === id)
 
-        const updatedStudents = students.map((item) => {
+        const updatedStudents = data.students.map((item) => {
             if (item.id == targetStudent.id) {
 
                 item.isPresent = !item.isPresent;
@@ -25,7 +25,7 @@ const Attendance = () => {
             }
             return item;
         })
-        setStudents(updatedStudents);
+        data.setStudents(updatedStudents);
     }
 
 
@@ -36,10 +36,10 @@ const Attendance = () => {
                 <h2>Present Students</h2><hr />
                 <ul>
                     {
-                        students.filter(item => item.isPresent === true).map(item => (
+                        data.students.filter(item => item.isPresent === true).map(item => (
                             <li key={item.id}>
                                 <span>{item.name}</span>
-                                <button onClick={() => { changeStudent(item.id) }}>Remove</button>
+                                <button onClick={() => {changeStudent(item.id) }}>Remove</button>
                             </li>
                         ))
                     }
@@ -51,7 +51,7 @@ const Attendance = () => {
                 <h2>Absent Students</h2><hr />
                 <ul>
                     {
-                        students.filter(item => item.isPresent === false).map(item => (
+                        data.students.filter(item => item.isPresent === false).map(item => (
                             <li key={item.id}>
                                 <span>{item.name}</span>
                                 <button onClick={() => { changeStudent(item.id) }}>Remove</button>
