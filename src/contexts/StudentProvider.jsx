@@ -1,30 +1,36 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
-export const studentContext = createContext() ; 
+export const studentContext = createContext();
 
+const studentProvider = ({ children }) => {
+ 
+  const storedStudents = JSON.parse(localStorage.getItem('key')) || [] ; 
 
-const studentProvider = ({children}) => {
-    const [studentName , setStudentName] = useState("") ; 
-    const [students,setStudents] = useState([]) ; 
-    const [editMode , setEditMode] = useState(false); 
-    const [editableStudent , setEditableStudent] = useState(null) ; 
+  const [studentName, setStudentName] = useState("");
+  const [students, setStudents] = useState(storedStudents);
+  const [editMode, setEditMode] = useState(false);
+  const [editableStudent, setEditableStudent] = useState(null);
 
-    const obj = {
-        studentName,
-        setStudentName,
-        students,
-        setStudents,
-        editMode,
-        setEditMode,
-        editableStudent,
-        setEditableStudent
-    }
+useEffect ( () => {
+  localStorage.setItem('key' , JSON.stringify(students)) ; 
+}, [students]) ; 
 
-    return (
-        <studentContext.Provider value={obj}>
-            {children}
-        </studentContext.Provider>
-    )
-}
+  const obj = {
+    studentName,
+    setStudentName,
+    students,
+    setStudents,
+    editMode,
+    setEditMode,
+    editableStudent,
+    setEditableStudent,
+  };
 
-export default studentProvider 
+  return (
+    <studentContext.Provider value={obj}>
+      {children}
+    </studentContext.Provider>
+  );
+};
+
+export default studentProvider;
