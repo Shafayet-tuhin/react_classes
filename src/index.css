@@ -59,6 +59,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+input{
+  background-color: #fff;
+  border: 1px solid gray;
+  color: black;
+}
 .student-section{
   display: flex;
   gap: 2rem;
