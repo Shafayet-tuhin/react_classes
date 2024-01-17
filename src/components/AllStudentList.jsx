@@ -1,77 +1,42 @@
-import React from 'react'
-
-const AllStudentList = ({students , setStudents , setEditMode , setEditableStudent , setStudentName}) => {
-
-
-  const revomeHandler = (id) => {
-    const currentStudent = students.filter( el => el.id !== id) ;
-    setStudents(currentStudent) ; 
-  }
-
-  const editHandler = (id) => {
-      const toBeUpdated = students.find(el => el.id === id) ;
-        
-      setEditMode(true) ; 
-      setEditableStudent(toBeUpdated) ;
-      setStudentName(toBeUpdated.name) ;
-  }
+import React, { useContext } from 'react'
+import { studentContext } from '../contexts/StudentProvider';
 
 
+const AllStudentList = () => {
 
- 
- 
-   const presentHandler =(id) => {
-   const targetStudent = students.find( item => item.id === id) ; 
-   
-   if( targetStudent.isPresent === true || targetStudent.isPresent === false) {
-    return alert("The student has already in a list") ;
-   }
-
-   const updatedStudets = students.map((item) => {
-    if (item.id == targetStudent.id) {
-      item.isPresent = true ;
-    }
-    return item ; 
-   })
-    
-   setStudents(updatedStudets) ;
+  const { studnetState, dispatch } = useContext(studentContext);
   
-  }
-
-  const absentHandler = (id) => {
-    const targetStudent = students.find( item => item.id === id) ; 
-   
-    if( targetStudent.isPresent === true || targetStudent.isPresent === false) {
-     return alert("The student has already in a list") ;
+  const presentCheck =(el) => {
+    if( el.isPresent === true || el.isPresent === false) {
+      return alert( "Student is already in a list ")
     }
- 
-    const updatedStudets = students.map((item) => {
-     if (item.id == targetStudent.id) {
-       item.isPresent = false ;
-     }
-     return item ; 
-    })
-     
-    setStudents(updatedStudets) ;
+    dispatch ( {type : 'prepareStudent' , value : el.id})
+  }
+  
+  const absentCheck =(el) => {
+    if( el.isPresent === true || el.isPresent === false) {
+      return alert( "Student is already in a list ")
+    }
+    dispatch ( {type : 'AbsenateStudent' , value : el.id})
   }
 
   return (
     <div className="list all-students">
-    <h2>All Students</h2><hr />
-    <ul>
-      {
-        students.map(item => (
-          <li key={item.id}>
-            <span>{item.name}</span>
-            <button onClick={() => {editHandler(item.id)}}>Edit</button>
-            <button onClick={() => {revomeHandler(item.id)}}>Delete</button>
-            <button onClick={() => {presentHandler(item.id)}}>Make Present</button>
-            <button onClick={() => {absentHandler(item.id)}}>Make Absent</button>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+      <h2>All Students</h2><hr />
+      <ul>
+        {
+          studnetState.students.map(item => (
+            <li key={item.id}>
+              <span>{item.name}</span>
+              <button onClick={() => dispatch({ type: 'EditStudent_Name', value: item.id })}>Edit</button>
+              <button onClick={() => dispatch({ type: 'DeleteStudent', value: item.id })}>Delete</button>
+              <button onClick={() => presentCheck(item)}>Make Present</button>
+              <button onClick={() => absentCheck(item)}>Make Absent</button>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   )
 }
 
