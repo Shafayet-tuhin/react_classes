@@ -36,7 +36,7 @@ h1 {
 }
 
 li{
-  list-style:decimal;
+  list-style: none;
 }
 button {
   border-radius: 8px;
