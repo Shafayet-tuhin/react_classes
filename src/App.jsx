@@ -105,7 +105,7 @@ function App() {
         <button type='submit'>{editMode ? "Update Note" : "Create Note"}</button>
       </form>
 
-      <ul>
+      <ul className='list'>
         {
           notes.map(item => (
             <li key={item.id}>
