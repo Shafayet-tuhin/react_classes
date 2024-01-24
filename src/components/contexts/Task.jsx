@@ -1,5 +1,5 @@
 import { createContext , useReducer } from "react";
-import { taskReducer } from "../reducers/task";
+import { taskReducer } from "../../reducers/task";
 
 
 export const taskContext = createContext() ; 

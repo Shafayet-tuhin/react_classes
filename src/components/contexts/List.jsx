@@ -1,7 +1,7 @@
 import { createContext , useReducer } from "react";
-import { listReducer } from '../reducers/list';
+import { listReducer } from '../../reducers/list';
 
-export const BoardContext = createContext() ; 
+export const listContext = createContext() ; 
 
 const ListProvider = ({children}) => {
     const [lists , dispathclist] = useReducer(listReducer , [] )
