@@ -4,7 +4,7 @@ export const listReducer = (lists = [], action) => {
         case 'CreateList': {
 
             const newList = {
-                id: Date.now(),
+                id: action.payload.id,
                 title: action.payload,
                 boardId: action.payload.boardId,
                 tasks: []
