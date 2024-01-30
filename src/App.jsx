@@ -1,15 +1,14 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { counterIncrease } from "./store/actions/counters";
-import { counterDecrease } from "./store/actions/counters";
+import { counterIncrease ,counterDecrease } from "./store/actions/counters";
 import { changeBgColor, changeTextColor, resetTheme } from "./store/actions/theme";
 
 function App() {
-  const counter = useSelector((store) => store.counter);
-  const theme = useSelector((store) => store.theme)
-  
+  const counter = useSelector((store) => store.countReducer);
+  const theme = useSelector((store) => store.themeReducer)
+   
   const dispatch = useDispatch();
-  console.log(theme);
+  // console.log(theme);
   return (
     <div  style={{ color :theme.color , backgroundColor: theme.bgColor }}>
       <div>

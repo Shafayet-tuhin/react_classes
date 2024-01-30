@@ -3,16 +3,21 @@ import {
     createStore
 } from 'redux';
 
-const countReducer = (state = 10, action) => {
-    switch (action.type) {
-        case 'counter/increase':
-            return state + action.payload;
-        case 'counter/decrease':
-            return state - action.payload;
-        default:
-            return state;
+
+const countReducer = (state = 0 , action) => {
+    switch(action.type){
+        case 'counter/increase' : {
+            return state + action.payload
+        }
+        case 'counter/decrease' : {
+            return state - action.payload
+        }
+        default:{
+            return state
+        }
     }
 }
+
 
 const initTheme = {
     bgColor: "#fff",
@@ -24,7 +29,7 @@ const themeReducer = (state = initTheme, action) => {
     switch (action.type) {
         case 'theme/changeBg': {
             return {
-                ...state ,
+                 ...state,
                  bgColor: action.payload
             }
         }
@@ -48,8 +53,8 @@ const themeReducer = (state = initTheme, action) => {
 
 
 const rootReducer = combineReducers({
-    counter: countReducer,
-    theme: themeReducer
+     countReducer,
+     themeReducer
 })
 
 export const store = createStore(rootReducer)
