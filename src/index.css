@@ -42,12 +42,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #064166;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #07aae0;
 }
 button:focus,
 button:focus-visible {
@@ -140,7 +140,7 @@ li {
 .page-banner {
   height: 380px;
   position: relative;
-  background-color: #12788a;
+  background-color: #015275;
 }
 
 .page-banner__details {
@@ -169,7 +169,7 @@ li {
 
 .page-banner__details__title h1 {
   font-size: 55px;
-  color: #d1a71c;
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -542,6 +542,10 @@ li {
 .qty_input .qty-count:hover {
   background-color: rgba(10, 60, 136, 0.527);
 }
+
+
+
+
 
 /* Shopping Cart Css Ends  */
 

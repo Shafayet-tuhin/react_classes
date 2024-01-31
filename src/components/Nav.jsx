@@ -8,10 +8,14 @@ const Nav = () => {
                 <nav className='header__navbar'>
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/">
+                                <button>Home</button>
+                            </Link>
                         </li>
                         <li>
-                            <Link to="/cart">Cart</Link>
+                            <Link to="/cart">
+                                <button>Cart</button>
+                            </Link>
                         </li>
                     </ul>
                 </nav>

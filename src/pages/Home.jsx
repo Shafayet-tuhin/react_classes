@@ -17,7 +17,7 @@ const Home = () => {
             <div className="page-banner">
                 <div className="page-banner__details">
                     <div className="page-banner__details__title">
-                        <h1>Our E-commerce Website</h1>
+                        <h1>Tuhins E-commerce Website</h1>
                     </div>
                 </div>
             </div>

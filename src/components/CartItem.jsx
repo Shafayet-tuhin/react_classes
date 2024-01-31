@@ -22,7 +22,6 @@ function CartItem({ item }) {
                 <div class="qty_input">
                     <button
                         class="qty-count qty-count--minus"
-                        data-action="minus"
                         type="button"
                         onClick={() => {
                             if (quantity > 1) {
@@ -52,7 +51,6 @@ function CartItem({ item }) {
                     />
                     <button
                         class="qty-count qty-count--add"
-                        data-action="add"
                         type="button"
                         onClick={() => {
                             dispatch({

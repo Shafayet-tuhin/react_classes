@@ -2,7 +2,7 @@ export const CartReducer = (state = [], action) => {
     switch (action.type) {
         case 'Add_To_Cart': {
             const product = state.find(item => item.id === action.payload.id)
-
+            // alert("Product added to cart")       
             return product ? state.map(item => {
                 if (item.id === product.id) {
                     return {
@@ -12,6 +12,7 @@ export const CartReducer = (state = [], action) => {
                 }
                 return item
             }) : [...state, { ...action.payload, quantity: 1 }]
+           
         }
 
         case 'Remove_From_Cart': {
