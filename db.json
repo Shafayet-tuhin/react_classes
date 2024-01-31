@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 10,
+      "image": "https://www.startech.com.bd/image/cache/catalog/mouse/razer/basilisk-x-hyperspeed/basilisk-x-hyperspeed-500x500.jpg",
+      "description": "Razer Basilisk X"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 20,
+      "image": "https://www.startech.com.bd/image/cache/catalog/mouse/apple/magic-mouse/magic-mouse-01-500x500.jpg",
+      "description": "Apple Magic Mouse 2"
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "price": 30,
+      "image": "https://www.startech.com.bd/image/cache/catalog/mouse/microsoft/souris-arc/souris-arc-bla-500x500.jpg",
+      "description": "Microsoft Surface Arc "
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "price": 40,
+      "image": "https://www.startech.com.bd/image/cache/catalog/mouse/thunderobot/ml903/ml903-500x500.webp",
+      "description": "ThundeRobot ML903"
+    },
+    {
+      "id": 5,
+      "name": "Product 5",
+      "price": 50,
+      "image": "https://www.startech.com.bd/image/cache/catalog/mouse/fantech/xd5/xd5-space-edition-02-500x500.jpg",
+      "description": "Fantech Helios Go"
+    },
+    {
+      "id": 6,
+      "name": "Product 6",
+      "price": 60,
+      "image": "https://www.startech.com.bd/image/cache/catalog/mouse/logitech/mx-master-3/mx-master-3-graphite-top-500x500.jpg",
+      "description": "Logitech MX Master 3"
+    }
+  ]
+}

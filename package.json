@@ -7,12 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start-json-server": "json-server -p 4000 --watch db.json"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
+    "react-router": "^6.21.3",
+    "react-router-dom": "^6.21.3",
     "redux": "^5.0.1"
   },
   "devDependencies": {
