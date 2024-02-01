@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Nav from "./../components/Nav";
 import CartItem from "../components/CartItem";
 import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../reducers/Card";
 
 const Cart = () => {
  
@@ -46,7 +47,7 @@ const Cart = () => {
                     Your Total Prcie Will be $ {totalAnount}
                 </h2>
                 <div className="mt-50">
-                    <button onClick={()=>dispatch({type:'RESET'})} className="btn-big" style={{color:'white' , padding:'1rem' , backgroundColor:'gray', marginBottom:'1rem'}}>Clear Cart</button>
+                    <button onClick={()=>dispatch(reset())} className="btn-big" style={{color:'white' , padding:'1rem' , backgroundColor:'gray', marginBottom:'1rem'}}>Clear Cart</button>
                 </div>
             </div>
         </div>

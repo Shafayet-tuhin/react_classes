@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { addToCart } from '../reducers/Card';
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch() ;
@@ -17,7 +18,7 @@ const ProductCard = ({ product }) => {
             </div>
 
             <div className='ingredient__btn'>
-                <button onClick={() => dispatch({type:'Add_To_Cart' , payload : product})} className='btn-white'>Add To Cart</button>
+                <button onClick={() => dispatch(addToCart(product))} className='btn-white'>Add To Cart</button>
             </div>
 
         </div>

@@ -1,4 +1,4 @@
-import { CartReducer } from "./Card";
+import CartReducer from "./Card";
 import { combineReducers, createStore } from "redux";
 
 const rootReducer = combineReducers({
